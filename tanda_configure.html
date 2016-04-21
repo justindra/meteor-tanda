@@ -1,5 +1,13 @@
 <template name="configureLoginServiceDialogForTanda">
-  <p>First, you'll need to get a Tanda AppId.</p>
-  <p>Please visit the Tanda page to get it all sorted.</p>
+  <p>First, you'll need to get some credentials, follow the steps below.</p>
+  <ol>
+    <li>Go to <a href="https://my.tanda.co/api/oauth/applications">https://my.tanda.co/api/oauth/applications</a></li>
+    <li>Click add New App</li>
+    <li>Select a name for your app</li>
+    <li>Set the redirect uri to be <a href="{{siteUrl}}_oauth/tanda">{{siteUrl}}_oauth/tanda</a></li>
+    <li>Copy the AppId and AppSecret below or use in configuration files</li>
+  </ol>
+
+  <p>More info on the Tanda API, checkout the docs at:</p>
   <a href="https://my.tanda.co/api/v2/documentation">https://my.tanda.co/api/v2/documentation</a>
 </template>
