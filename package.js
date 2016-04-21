@@ -1,24 +1,26 @@
 Package.describe({
-  name: 'justindra-tanda',
-  version: '0.0.1',
-  // Brief, one-line summary of the package.
-  summary: '',
-  // URL to the Git repository containing the source code for this package.
-  git: '',
-  // By default, Meteor will default to using README.md for documentation.
-  // To avoid submitting documentation, set this field to null.
+  name: 'justindra:tanda',
+  version: '0.1.0',
+  summary: 'Tanda OAuth flow',
+  git: 'https://github.com/justindra/meteor-tanda',
   documentation: 'README.md'
 });
 
 Package.onUse(function(api) {
-  api.versionsFrom('1.3.1');
-  api.use('ecmascript');
-  api.mainModule('justindra-tanda.js');
-});
+  api.use('oauth2', ['client', 'server']);
+  api.use('oauth', ['client', 'server']);
+  api.use('http', ['server']);
+  api.use('templating', 'client');
+  api.use('underscore', 'server');
+  api.use('random', 'client');
+  api.use('service-configuration', ['client', 'server']);
 
-Package.onTest(function(api) {
-  api.use('ecmascript');
-  api.use('tinytest');
-  api.use('justindra-tanda');
-  api.mainModule('justindra-tanda-tests.js');
+  api.export('Tanda');
+
+  api.addFiles(
+    ['tanda_configure.html', 'tanda_configure.js'],
+    'client');
+
+  api.addFiles('tanda_server.js', 'server');
+  api.addFiles('tanda_client.js', 'client');
 });
