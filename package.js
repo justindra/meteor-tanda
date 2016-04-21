@@ -1,12 +1,13 @@
 Package.describe({
   name: 'justindra:tanda',
-  version: '0.1.0',
+  version: '0.1.1',
   summary: 'Tanda OAuth flow',
   git: 'https://github.com/justindra/meteor-tanda',
   documentation: 'README.md'
 });
 
 Package.onUse(function(api) {
+  api.versionsFrom('1.0');
   api.use('oauth2', ['client', 'server']);
   api.use('oauth', ['client', 'server']);
   api.use('http', ['server']);
