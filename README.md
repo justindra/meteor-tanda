@@ -1,6 +1,10 @@
-# tanda
+# Tanda
 
 An implementation of the [Tanda](https://www.tanda.co/) OAuth flow.
+
+## Installation
+
+    meteor add justindra:tanda
 
 ## Header Scopes
 
