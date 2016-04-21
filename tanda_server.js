@@ -67,19 +67,21 @@ var getTokenResponse = function (query) {
         }
       }).content;
   } catch (err) {
-    throw _.extend(new Error("Failed to complete OAuth handshake with Tanda. " + err.message),
+    throw _.extend(new Error("Failed to complete OAuth handshake with Tanda." + err.message),
                    {response: err.response});
   }
 
-  // If 'responseContent' parses as JSON, it is an error.
-  // XXX which Tanda error causes this behvaior?
+  // Check if its already a JSON Object
+  // If not, parse the response
+  var parsedResponse;
   if (isJSON(responseContent)) {
-    throw new Error("Failed to complete OAuth handshake with Tanda. " + responseContent);
+    parsedResponse = JSON.parse(responseContent);
+  } else {
+    parsedResponse = querystring.parse(responseContent);
   }
 
-  // Success!  Extract the tanda access token and expiration
+  // Extract the tanda access token and expiration
   // time from the response
-  var parsedResponse = querystring.parse(responseContent);
   var tandaAccessToken = parsedResponse.access_token;
   var tandaExpires = parsedResponse.expires_in;
   var tandaRefreshToken = parsedResponse.refresh_token;

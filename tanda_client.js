@@ -24,16 +24,16 @@ Tanda.requestCredential = function (options, credentialRequestCompleteCallback) 
   var mobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|Windows Phone/i.test(navigator.userAgent);
   var display = mobile ? 'touch' : 'popup';
 
-  var scope = 'me';
+  var scope = 'me+user';
   if (options && options.requestPermissions)
-    scope = options.requestPermissions.join(',');
+    scope = options.requestPermissions.join('+');
 
   var loginStyle = OAuth._loginStyle('tanda', config, options);
 
   var loginUrl =
         'https://my.tanda.co/api/oauth/authorize' +
-        '&scope=' + scope +
-        '?client_id=' + config.appId +
+        '?scope=' + scope +
+        '&client_id=' + config.appId +
         '&redirect_uri=' + OAuth._redirectUri('tanda', config) +
         '&response_type=code' +
         '&state=' + OAuth._stateParam(loginStyle, credentialToken, options && options.redirectUrl);

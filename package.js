@@ -1,6 +1,6 @@
 Package.describe({
   name: 'justindra:tanda',
-  version: '0.1.1',
+  version: '0.1.2',
   summary: 'Tanda OAuth flow',
   git: 'https://github.com/justindra/meteor-tanda',
   documentation: 'README.md'
